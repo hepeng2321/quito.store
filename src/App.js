@@ -14,18 +14,6 @@ const AppRoute = (props) => {
     {path: "/shop", element: <Shop />, exact: true},
     {path: "/shop/:cat", element: <Shop />, exact: true},
     {path: "/product/:id", element: <Product />, exact: true},
-    // {path: "/group/:group", element: <Group setShowHeader={setShowHeader} />, exact: true},
-    // {path: "/profile/:user", element: <Profile setShowHeader={setShowHeader} />, exact: true},
-    // {path: "/profile", element: <Profile setShowHeader={setShowHeader} />, exact: true},
-    // {path: "/notification", element: <Notification />, exact: true},
-    // {path: "/explore", element: <Explore />, exact: true},
-    // {path: "/bookmark", element: <Bookmark />, exact: true},
-    // {path: "/search", element: <Search />, exact: true},
-    // {path: "/post/:postId", element: <Post />, exact: true},
-    // {path: "/test", element: <MyList />, exact: true},
-    // {path: "/test2", element: <MyEditor />, exact: true},
-    // {path: "/test3", element: <SimpleCollapse />, exact: true},
-    // {path: "/test4", element: <BasicGrid />, exact: true},
   ]);
 };
 

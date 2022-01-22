@@ -21,18 +21,25 @@ class AShop extends PureComponent {
       handleGetRecommendList
     } = this.props
 
+    console.log(2, cat, page)
     if (!recommendList) {
+      console.log(3, cat, page)
       handleGetRecommendList()
       if (category !== cat || !prodList) {
+        console.log(4, cat, page)
         handleGetProdList(cat)
       }
       return null
     }
 
+    console.log(5, cat, page)
+
     if (category !== cat || !prodList) {
+      console.log(6, cat, page)
       handleGetProdList(cat)
       return null
     } else {
+      console.log(7, cat, page)
       return (
         <React.Fragment>
           <ShopHeader
