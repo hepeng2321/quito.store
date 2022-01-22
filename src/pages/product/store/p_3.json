@@ -1,0 +1,28 @@
+{
+  "Code": 0,
+  "Msg": "",
+  "Body": {
+    "Id": "3",
+    "Title": "Abrigo de corte recto con cinturón de anudar",
+    "Pic": [
+      "https://cdn.discordapp.com/attachments/803836800593690665/933856401757966336/hmgoepprod.png",
+      "https://cdn.discordapp.com/attachments/803836800593690665/933856449916973076/hmgoepprod.png",
+      "https://cdn.discordapp.com/attachments/851633964807749642/934229139991457862/hmgoepprod.png",
+      "https://cdn.discordapp.com/attachments/851633964807749642/934229163873804358/hmgoepprod.png",
+      "https://cdn.discordapp.com/attachments/851633964807749642/934229181372465192/hmgoepprod.png",
+      "https://cdn.discordapp.com/attachments/851633964807749642/934229216352956436/hmgoepprod.png"
+    ],
+    "Price": 0,
+    "POri": 690,
+    "Stock": [
+      {"size": "S", "qty": 2},
+      {"size": "M", "qty": 8},
+      {"size": "L", "qty": 0},
+      {"size": "XL", "qty": 1},
+      {"size": "XXL", "qty": 12},
+      {"size": "XXXL", "qty": 3}
+    ],
+    "Description": "Description Description Description Description",
+    "fabric": "Cotton"
+  }
+}

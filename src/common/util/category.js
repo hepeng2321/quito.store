@@ -1,0 +1,6 @@
+export const fashion = "Ropa de mujer"
+export const suit = "Traje"
+export const shoes = "Zapatos de mujer"
+export const accessories = "Accesorios"
+export const pajamas = "Piyama"
+export const cosmetic = "Cosmético"

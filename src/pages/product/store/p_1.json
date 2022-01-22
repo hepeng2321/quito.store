@@ -1,0 +1,33 @@
+{
+  "Code": 0,
+  "Msg": "",
+  "Body": {
+    "Id": "1",
+    "Title": "Abrigo midi",
+    "Pic": [
+      "https://cdn.discordapp.com/attachments/803836800593690665/933855053100503140/hmgoepprod.png",
+      "https://cdn.discordapp.com/attachments/803836800593690665/933855386413441075/hmgoepprod.png",
+      "https://cdn.discordapp.com/attachments/851633964807749642/933929135032659988/hmgoepprod.png",
+      "https://cdn.discordapp.com/attachments/851633964807749642/933929186911985674/hmgoepprod.png",
+      "https://cdn.discordapp.com/attachments/851633964807749642/933929205031387226/hmgoepprod.png",
+      "https://cdn.discordapp.com/attachments/851633964807749642/933929287306850374/hmgoepprod.png",
+      "https://cdn.discordapp.com/attachments/851633964807749642/933929308530020413/hmgoepprod.png",
+      "https://cdn.discordapp.com/attachments/851633964807749642/933929331867123782/hmgoepprod.png",
+      "https://cdn.discordapp.com/attachments/851633964807749642/933929361567006720/hmgoepprod.png",
+      "https://cdn.discordapp.com/attachments/851633964807749642/933929404697022524/hmgoepprod.png"
+    ],
+    "Price": 299,
+    "POri": 550,
+    "Stock": [
+      {"size": "S", "qty": 2},
+      {"size": "M", "qty": 8},
+      {"size": "L", "qty": 0},
+      {"size": "XL", "qty": 1},
+      {"size": "XXL", "qty": 12},
+      {"size": "XXXL", "qty": 3}
+    ],
+    "Description": "Description Description Description Description Description \nDescription Description Description Description Description Description Description Description Description",
+    "Fabric": "Cotton",
+    "Color": "Black"
+  }
+}
