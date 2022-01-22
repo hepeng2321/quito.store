@@ -1,8 +1,9 @@
 import React from 'react'
 import {useParams} from "react-router-dom";
 import AShop from "./aShop";
+import {connect} from "react-redux";
 
-export default function Shop(props) {
+function Shop(props) {
 
   let { cat } = useParams();
   console.log(0, cat)
@@ -15,3 +16,15 @@ export default function Shop(props) {
   )
 
 }
+
+const mapStateToProps = (state) => {
+  return {
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Shop);
