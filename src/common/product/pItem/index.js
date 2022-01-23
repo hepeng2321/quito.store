@@ -71,6 +71,8 @@ export default function PItem(props) {
   }
 
   const {
+    itemWidth,
+    itemHeight,
     product
   } = props
 
@@ -80,6 +82,7 @@ export default function PItem(props) {
         <ProductItemPictureImg
           src={hoverPic ? product.Pic[1]: product.Pic[0]}
           alt={"img"}
+          style={{width: itemWidth, height: itemHeight}}
           onMouseEnter={handlePicToSecond}
           onMouseLeave={handlePicToFirst}
         />

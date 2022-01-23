@@ -2,12 +2,6 @@ import * as actionTypes from './actionTypes';
 import axios from 'axios';
 import {Timeout} from "../../util/url";
 
-export const shiftUser = (user, token) => ({
-  type: actionTypes.SHIFT_USER,
-  user: user,
-  token: token
-})
-
 const login = (user, token, helloRes, me, unreadUlog) => ({
   type: actionTypes.LOGIN,
   domain: helloRes.Domain,
@@ -220,40 +214,6 @@ export const helloAPI = (user, token) => {
 
 };
 
-const helloGuest = (data) => ({
-  type: actionTypes.HELLO_GUEST,
-  domain: data.Domain,
-  serverTime: data.TimeStamp,
-  avatarPath: data.Avatar,
-  guestToken: data.OncetimeUser,
-})
-
-export const helloGuestAPI = () => {
-
-  return (dispatch) => {
-    const instance = axios.create({
-      baseURL: '/api/vapi/vgr1/hello',
-      timeout: Timeout,
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    });
-
-    return new Promise((resolve, reject) => {
-      instance.get('')
-        .then((res) => {
-          console.log("helloAPI-guest", res)
-          const data = res.data
-          dispatch(helloGuest(data.Body))
-        })
-        .catch((e) => {
-          reject(e)
-        })
-    })
-  }
-
-};
-
 const getUserInfo = (data) => ({
   type: actionTypes.GET_USERINFO,
   data: data,
@@ -309,60 +269,3 @@ export const getUserInfoAPI = (token, domain, keys) => {
   }
 
 };
-
-const getUnreadUlog = (data) => ({
-  type: actionTypes.GET_NOTIFICATION,
-  data: data,
-})
-
-export const getUnreadUlogAPI = (domain, keys) => {
-
-  return (dispatch) => {
-
-    let reqList = []
-    for (const key of keys) {
-      let req = axios.get(
-        '/api/' + domain + '/vgr1/unreadulog',
-        {
-          timeout: Timeout,
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': key.token
-          }
-        })
-      reqList.push(req)
-    }
-
-    return axios.all(reqList).then(axios.spread(function(...resList) {
-      let res = []
-      for (let i = 0; i < keys.length; ++i) {
-        res.push({user: keys[i].user, unreadUlog: resList[i].data.Body})
-      }
-      dispatch(getUnreadUlog(res))
-    }))
-
-  }
-};
-
-export const setPage = (page) => ({
-  type: actionTypes.PAGE,
-  page: page,
-})
-
-export const hasNews = () => ({
-  type: actionTypes.HAS_NEWS
-})
-
-export const clearNews = () => ({
-  type: actionTypes.CLEAR_NEWS
-})
-
-export const setChatId = (chatId) => ({
-  type: actionTypes.SET_CHATID,
-  chatId: chatId
-})
-
-export const setChatIdGroup = (chatId) => ({
-  type: actionTypes.SET_CHATIDGROUP,
-  chatIdGroup: chatId
-})

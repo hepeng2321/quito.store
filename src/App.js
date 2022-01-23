@@ -1,5 +1,4 @@
 import React, {PureComponent} from "react";
-import {connect} from "react-redux";
 import {BrowserRouter as Router, useRoutes} from "react-router-dom";
 import Home from './pages/home';
 import {MyBackground} from './style'
@@ -19,15 +18,6 @@ const AppRoute = (props) => {
 
 class App extends PureComponent {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      loginUser: "",
-    }
-
-  }
-
   render() {
     return (
       <MyBackground>
@@ -41,15 +31,4 @@ class App extends PureComponent {
 
 }
 
-const mapStateToProps = (state) => {
-  return {
-    loginUser: state.getIn(['header', 'loginUser']),
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

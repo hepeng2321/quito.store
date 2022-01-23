@@ -58,7 +58,7 @@ export default function MenuMain(props) {
         sx={{
           display: { xs: 'block', md: 'none' },
           width: 40, height: 40,
-          color: '#0FA2E6'
+          color: 'white'
         }}
       >
         <MenuIcon />

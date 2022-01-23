@@ -11,9 +11,12 @@ import ProductDetail from "../../common/product/pDetail";
 export default function ProductContent(props) {
 
   const {
+    itemWidth,
     product,
     recommendList
   } = props
+
+  let itemHeight = Math.ceil(itemWidth * 300 / 210)
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -34,9 +37,11 @@ export default function ProductContent(props) {
               <Grid container justifyContent="center" spacing={2}>
                 {recommendList.product.map((item) => (
                   <Grid key={"rec_"+item.Id} item>
-                    <Paper elevation={0} sx={{ height: 'auto', width: 210 }}>
+                    <Paper elevation={0} sx={{ height: 'auto', width: itemWidth }}>
                       <PItem
                         product={item}
+                        itemWidth={itemWidth}
+                        itemHeight={itemHeight}
                       />
                     </Paper>
                   </Grid>
@@ -63,9 +68,11 @@ export default function ProductContent(props) {
               <Grid container justifyContent="center" rowSpacing={1} columnSpacing={0}>
                 {recommendList.product.map((item) => (
                   <Grid key={"rec_"+item.Id} item>
-                    <Paper elevation={0} sx={{ height: 'auto', width: 210 }}>
+                    <Paper elevation={0} sx={{ height: 'auto', width: itemWidth }}>
                       <PItem
                         product={item}
+                        itemWidth={itemWidth}
+                        itemHeight={itemHeight}
                       />
                     </Paper>
                   </Grid>

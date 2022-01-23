@@ -8,8 +8,6 @@ export const ProductItemWrapperDiv = styled.div`
 
 export const ProductItemPictureImg = styled.img`
   float: top;
-  width: 210px;
-  height: 300px;
   object-fit: cover;
   border-radius: 5px 5px 0 0;
   cursor: pointer;

@@ -4,8 +4,40 @@ import {actionCreators} from "./store";
 import {actionCreators as acShop} from "../shop/store";
 import ShopHeader from "../../common/shopHeader";
 import ProductContent from "./content";
+import {Hidden} from "@mui/material";
+
+function getWidth() {
+  let width = Math.ceil(window.innerWidth - 30) / 2
+  if (width < 150) {
+    width = Math.ceil(window.innerWidth - 30)
+    if (width < 150) {
+      width = 150
+    }
+  }
+  if (width > 210) {
+    width = 210
+  }
+  return width
+}
 
 class AProduct extends PureComponent {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      itemWidth: getWidth()
+    }
+    this.handleResize = this.handleResize.bind(this)
+  }
+
+  handleResize = () => {
+    let itemWidth = getWidth()
+    if (itemWidth !== this.state.itemWidth) {
+      this.setState({
+        itemWidth: itemWidth
+      })
+    }
+  }
 
   openPage = (page) => {
     this.props.setPage(page)  //设置激活页
@@ -33,15 +65,16 @@ class AProduct extends PureComponent {
       handleGetProduct(id)
       return null
     } else {
-      console.log(100, product.toJS())
-      console.log(200, recommendList.toJS())
       return (
         <React.Fragment>
-          <ShopHeader
-            page={""}
-            openPage={this.openPage}
-          />
+          <Hidden mdDown>
+            <ShopHeader
+              page={""}
+              openPage={this.openPage}
+            />
+          </Hidden>
           <ProductContent
+            itemWidth={this.state.itemWidth}
             product={product.toJS()}
             recommendList={recommendList.toJS()}
           />

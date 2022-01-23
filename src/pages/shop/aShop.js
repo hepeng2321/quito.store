@@ -3,8 +3,40 @@ import {connect} from "react-redux";
 import {actionCreators} from "./store";
 import ShopHeader from "../../common/shopHeader";
 import ShopContent from "./content";
+import {Hidden} from "@mui/material";
+
+function getWidth() {
+  let width = Math.ceil(window.innerWidth - 30) / 2
+  if (width < 150) {
+    width = Math.ceil(window.innerWidth - 30)
+    if (width < 150) {
+      width = 150
+    }
+  }
+  if (width > 210) {
+    width = 210
+  }
+  return width
+}
 
 class AShop extends PureComponent {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      itemWidth: getWidth()
+    }
+    this.handleResize = this.handleResize.bind(this)
+  }
+
+  handleResize = () => {
+    let itemWidth = getWidth()
+    if (itemWidth !== this.state.itemWidth) {
+      this.setState({
+        itemWidth: itemWidth
+      })
+    }
+  }
 
   openPage = (page) => {
     this.props.setPage(page)  //设置激活页
@@ -42,12 +74,15 @@ class AShop extends PureComponent {
       console.log(7, cat, page)
       return (
         <React.Fragment>
-          <ShopHeader
-            cat={cat}
-            page={page}
-            openPage={this.openPage}
-          />
+          <Hidden mdDown>
+            <ShopHeader
+              cat={cat}
+              page={page}
+              openPage={this.openPage}
+            />
+          </Hidden>
           <ShopContent
+            itemWidth={this.state.itemWidth}
             prodList={prodList.toJS()}
             recommendList={recommendList.toJS()}
           />
@@ -55,6 +90,15 @@ class AShop extends PureComponent {
       )
     }
   }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.handleResize, true) //监听窗口大小改变
+  }
+
+  componentWillUnmount() { //一定要最后移除监听器，以防多个组件之间导致this的指向紊乱
+    window.removeEventListener('resize', this.handleResize, true)
+  }
+
 }
 
 const mapStateToProps = (state) => {

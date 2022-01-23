@@ -4,14 +4,15 @@ export const ProductListDiv = styled.div`
   width: auto;
   height: 100%;
   padding: 10px;
-  background: #f5f5f5;
+  background-image: linear-gradient(pink, hotpink);
 `;
 
 export const RecListDiv = styled.div`
   width: auto;
   height: 100%;
   padding: 10px;
-  background: #f5f5f5;
+  background-image: linear-gradient(pink, hotpink);
+  border-left: 1px solid #ddd;
 `;
 
 export const RecTitleDiv = styled.div`

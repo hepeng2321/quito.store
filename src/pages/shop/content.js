@@ -9,9 +9,12 @@ import PItem from "../../common/product/pItem";
 export default function ShopContent(props) {
 
   const {
+    itemWidth,
     prodList,
     recommendList
   } = props
+
+  let itemHeight = Math.ceil(itemWidth * 300 / 210)
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -19,12 +22,14 @@ export default function ShopContent(props) {
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <ProductListDiv className={"ProductListDiv"}>
-              <Grid container justifyContent="center" spacing={2}>
+              <Grid container justifyContent="center" spacing={1}>
                 {prodList.product.map((item) => (
-                  <Grid key={"cat_"+item.Id} item>
-                    <Paper elevation={0} sx={{ height: 'auto', width: 210 }}>
+                  <Grid key={"cat_"+item.Id} className={"cat_"+item.Id} item>
+                    <Paper elevation={0} sx={{ height: 'auto', width: itemWidth }}>
                       <PItem
                         product={item}
+                        itemWidth={itemWidth}
+                        itemHeight={itemHeight}
                       />
                     </Paper>
                   </Grid>
@@ -37,12 +42,14 @@ export default function ShopContent(props) {
               <Grid key={'TITLE'} item>
                 <RecTitleDiv>Gran Venta</RecTitleDiv>
               </Grid>
-              <Grid container justifyContent="center" spacing={2}>
+              <Grid container justifyContent="center" spacing={1}>
                 {recommendList.product.map((item) => (
                   <Grid key={"rec_"+item.Id} item>
-                    <Paper elevation={0} sx={{ height: 'auto', width: 210 }}>
+                    <Paper elevation={0} sx={{ height: 'auto', width: itemWidth }}>
                       <PItem
                         product={item}
+                        itemWidth={itemWidth}
+                        itemHeight={itemHeight}
                       />
                     </Paper>
                   </Grid>
@@ -58,10 +65,12 @@ export default function ShopContent(props) {
             <ProductListDiv className={"ProductListDiv"}>
               <Grid container justifyContent="center" spacing={2}>
                 {prodList.product.map((item) => (
-                  <Grid key={"cat_"+item.Id} item>
-                    <Paper elevation={0} sx={{ height: 'auto', width: 210 }}>
+                  <Grid key={"cat_"+item.Id} className={"cat_"+item.Id} item>
+                    <Paper elevation={0} sx={{ height: 'auto', width: itemWidth }}>
                       <PItem
                         product={item}
+                        itemWidth={itemWidth}
+                        itemHeight={itemHeight}
                       />
                     </Paper>
                   </Grid>
@@ -80,9 +89,11 @@ export default function ShopContent(props) {
               <Grid container justifyContent="center" rowSpacing={1} columnSpacing={0}>
                 {recommendList.product.map((item) => (
                   <Grid key={"rec_"+item.Id} item>
-                    <Paper elevation={0} sx={{ height: 'auto', width: 210 }}>
+                    <Paper elevation={0} sx={{ height: 'auto', width: itemWidth }}>
                       <PItem
                         product={item}
+                        itemWidth={itemWidth}
+                        itemHeight={itemHeight}
                       />
                     </Paper>
                   </Grid>
