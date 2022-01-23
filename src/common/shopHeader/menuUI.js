@@ -8,6 +8,11 @@ import Typography from "@mui/material/Typography";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import {fashion, suit, shoes, accessories, pajamas, cosmetic} from "../util/category";
+import {Divider, ListItemIcon} from "@material-ui/core";
+import HomeIcon from '@mui/icons-material/Home';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 function activeMenu(page, openPage) {
   return (
@@ -53,15 +58,42 @@ export function renderMenu(page, openPage, t) {
   if (t === "menu") {
     return (
       <MenuList>
+        <Link to={"/"}>
+          <MenuItem
+            key={"home"}
+            onClick={() => openPage("home")}
+            sx={{height: "40px"}}
+          >
+            <ListItemIcon>
+              {page === "home" ? <HomeIcon color="primary" /> : <HomeIcon/>}
+            </ListItemIcon>
+            {
+              page === "home" ?
+                activeMenuItem("Home") :
+                inactiveMenuItem("Home")
+            }
+          </MenuItem>
+        </Link>
+        <Divider />
+        <Link to={"/shop/fashion"}>
+          <MenuItem
+            key={"list"}
+            onClick={() => openPage(fashion)}
+            sx={{height: "40px"}}
+          >
+            <ListItemIcon>
+              <FormatListBulletedIcon />
+            </ListItemIcon>
+            {inactiveMenuItem("Category")}
+          </MenuItem>
+        </Link>
         <Link to={"/shop/fashion"}>
           <MenuItem
             key={fashion}
             onClick={() => openPage(fashion)}
-            sx={{height: "40px"}}
+            dense={true}
+            sx={{paddingLeft: "30px"}}
           >
-            {/*<ListItemIcon>*/}
-            {/*  {page === fashion ? <HomeIcon color="primary" /> : <HomeIcon/>}*/}
-            {/*</ListItemIcon>*/}
             {
               page === fashion ?
               activeMenuItem(fashion) :
@@ -73,15 +105,9 @@ export function renderMenu(page, openPage, t) {
           <MenuItem
             key={suit}
             onClick={() => openPage(suit)}
-            sx={{height: "40px"}}
+            dense={true}
+            sx={{paddingLeft: "30px", marginTop: "5px"}}
           >
-            {/*<ListItemIcon>*/}
-            {/*  {*/}
-            {/*    page === suit ?*/}
-            {/*      <NotificationsIcon color="primary" /> :*/}
-            {/*      <NotificationsIcon/>*/}
-            {/*  }*/}
-            {/*</ListItemIcon>*/}
             {
               page === suit ?
                 activeMenuItem(suit) :
@@ -93,15 +119,9 @@ export function renderMenu(page, openPage, t) {
           <MenuItem
             key={shoes}
             onClick={() => openPage(shoes)}
-            sx={{height: "40px"}}
+            dense={true}
+            sx={{paddingLeft: "30px", marginTop: "5px"}}
           >
-            {/*<ListItemIcon>*/}
-            {/*  {*/}
-            {/*    page === shoes ?*/}
-            {/*    <LocalFireDepartmentIcon color="primary" /> :*/}
-            {/*    <LocalFireDepartmentIcon/>*/}
-            {/*  }*/}
-            {/*</ListItemIcon>*/}
             {
               page === shoes ?
               activeMenuItem(shoes) :
@@ -113,15 +133,9 @@ export function renderMenu(page, openPage, t) {
           <MenuItem
             key={accessories}
             onClick={() => openPage(accessories)}
-            sx={{height: "40px"}}
+            dense={true}
+            sx={{paddingLeft: "30px", marginTop: "5px"}}
           >
-            {/*<ListItemIcon>*/}
-            {/*  {*/}
-            {/*    page === accessories ?*/}
-            {/*      <PersonIcon color="primary" /> :*/}
-            {/*      <PersonIcon/>*/}
-            {/*  }*/}
-            {/*</ListItemIcon>*/}
             {
               page === accessories ?
                 activeMenuItem(accessories) :
@@ -133,15 +147,9 @@ export function renderMenu(page, openPage, t) {
           <MenuItem
             key={pajamas}
             onClick={() => openPage(pajamas)}
-            sx={{height: "40px"}}
+            dense={true}
+            sx={{paddingLeft: "30px", marginTop: "5px"}}
           >
-            {/*<ListItemIcon>*/}
-            {/*  {*/}
-            {/*    page === pajamas ?*/}
-            {/*      <BookmarkBorderIcon color="primary" /> :*/}
-            {/*      <BookmarkBorderIcon/>*/}
-            {/*  }*/}
-            {/*</ListItemIcon>*/}
             {
               page === pajamas ?
                 activeMenuItem(pajamas) :
@@ -153,20 +161,35 @@ export function renderMenu(page, openPage, t) {
           <MenuItem
             key={cosmetic}
             onClick={() => openPage(cosmetic)}
-            sx={{height: "40px"}}
+            dense={true}
+            sx={{paddingLeft: "30px", marginTop: "5px", marginBottom: "5px"}}
           >
-            {/*<ListItemIcon>*/}
-            {/*  {*/}
-            {/*    page === cosmetic ?*/}
-            {/*      <SearchIcon color="primary" /> :*/}
-            {/*      <SearchIcon/>*/}
-            {/*  }*/}
-            {/*</ListItemIcon>*/}
             {
               page === cosmetic ?
                 activeMenuItem(cosmetic) :
                 inactiveMenuItem(cosmetic)
             }
+          </MenuItem>
+        </Link>
+        <Divider />
+        <Link to={"/"}>
+          <MenuItem
+            key={"location"}
+          >
+            <ListItemIcon>
+              <LocationOnIcon />
+            </ListItemIcon>
+            {inactiveMenuItem("Location")}
+          </MenuItem>
+        </Link>
+        <Link to={"/"}>
+          <MenuItem
+            key={"contact"}
+          >
+            <ListItemIcon>
+              <WhatsAppIcon />
+            </ListItemIcon>
+            {inactiveMenuItem("Contact")}
           </MenuItem>
         </Link>
       </MenuList>
