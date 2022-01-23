@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const ProductDetailWrapperDiv = styled.div`
   width: auto;
   height: auto;
+  alignment: center;
 `;
 
 export const ProductDetailTop1Div = styled.div`
@@ -16,27 +17,22 @@ export const ProductDetailPictureAreaDiv = styled.div`
   float: left;
   width: 50%;
   height: 536px;
-  //padding: 5px;
-  //background: whitesmoke;
-  //border: 1px solid #eee;
+  min-width: 300px;
+  max-width: 450px;
 `;
 
 export const ProductDetailPictureAreaDivMobile = styled.div`
   float: left;
   width: 100%;
   height: 536px;
-  //padding: 5px;
-  //background: whitesmoke;
-  //border: 1px solid #eee;
+  min-width: 300px;
+  max-width: 450px;
 `;
 
 export const ProductDetailStockAreaDiv = styled.div`
   float: left;
   width: 50%;
   height: auto;
-  //padding: 5px;
-  //background: whitesmoke;
-  //border: 1px solid #eee;
 `;
 
 export const ProductDetailStockAreaDivMobile = styled.div`

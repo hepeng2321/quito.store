@@ -7,9 +7,9 @@ import ProductContent from "./content";
 import {Hidden} from "@mui/material";
 
 function getWidth() {
-  let width = Math.ceil(window.innerWidth - 30) / 2
+  let width = Math.ceil(window.innerWidth - 40) / 2
   if (width < 150) {
-    width = Math.ceil(window.innerWidth - 30)
+    width = Math.ceil(window.innerWidth - 40)
     if (width < 150) {
       width = 150
     }
@@ -82,6 +82,15 @@ class AProduct extends PureComponent {
       )
     }
   }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.handleResize, true) //监听窗口大小改变
+  }
+
+  componentWillUnmount() { //一定要最后移除监听器，以防多个组件之间导致this的指向紊乱
+    window.removeEventListener('resize', this.handleResize, true)
+  }
+
 }
 
 const mapStateToProps = (state) => {

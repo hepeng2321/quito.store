@@ -46,10 +46,11 @@ export default function ProductDetail(props) {
           />
         </ProductDetailStockAreaDivMobile>
       </Hidden>
-      <ProductDetailPictureGroupDiv>
+      <ProductDetailPictureGroupDiv className={"ProductDetailPictureGroupDiv"}>
         {
           product.Pic.map((item, index) => (
             <ProductDetailPictureGroupPictureDiv
+              className={"ProductDetailPictureGroupPictureDiv"}
               key={index+item}
               src={item}
               alt={"img"}

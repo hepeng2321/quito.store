@@ -14,6 +14,7 @@ function renderPic(index, picIndex, item, setPic) {
   if (index === picIndex) {
     return (
       <ProductDetailPictureAreaListPictureSelectedDiv
+        className={"ProductDetailPictureAreaListPictureSelectedDiv"}
         key={index+item}
         src={item}
         alt={"img"}
@@ -23,6 +24,7 @@ function renderPic(index, picIndex, item, setPic) {
   } else {
     return(
       <ProductDetailPictureAreaListPictureDiv
+        className={"ProductDetailPictureAreaListPictureDiv"}
         key={index+item}
         src={item}
         alt={"img"}
@@ -89,15 +91,15 @@ class ProductPictures extends PureComponent {
 
     return (
       <React.Fragment>
-        <ProductDetailPictureWrapperDiv>
-          <ProductDetailPictureAreaListDiv ref={this.pRef}>
+        <ProductDetailPictureWrapperDiv className={"ProductDetailPictureWrapperDiv"}>
+          <ProductDetailPictureAreaListDiv ref={this.pRef} className={"ProductDetailPictureAreaListDiv"}>
             {
               product.Pic.map((item, index) => (
                 renderPic(index, picIndex, item, this.setPic)
               ))
             }
           </ProductDetailPictureAreaListDiv>
-          <ProductDetailPictureAreaBigPictureDiv>
+          <ProductDetailPictureAreaBigPictureDiv className={"ProductDetailPictureAreaBigPictureDiv"}>
             <ProductDetailPictureAreaBigPictureImg
               className={show ? 'show':'hide'}
               src={product.Pic[picIndex]}
@@ -106,7 +108,7 @@ class ProductPictures extends PureComponent {
           </ProductDetailPictureAreaBigPictureDiv>
         </ProductDetailPictureWrapperDiv>
 
-        <ProductDetailPictureAreaFunctionDiv>
+        <ProductDetailPictureAreaFunctionDiv className={"ProductDetailPictureAreaFunctionDiv"}>
           { playing ?
             <Button
               variant="contained"
