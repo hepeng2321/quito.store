@@ -4,14 +4,7 @@ import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Container from '@mui/material/Container';
 import {Typography} from "@mui/material";
-import c1 from "../../statics/c1.jpg"
-import c2 from "../../statics/c2.jpg"
-import c3 from "../../statics/c3.jpg"
-import c4 from "../../statics/c4.png"
-import c5 from "../../statics/c5.jpg"
-import c6 from "../../statics/c6.jpg"
 import {Link} from "react-router-dom"
-import {accessories, cosmetic, fashion, pajamas, shoes, suit} from "../util/category";
 
 const ImageBackdrop = styled('div')(({ theme }) => ({
   position: 'absolute',
@@ -61,51 +54,23 @@ const ImageIconButton = styled(ButtonBase)(({ theme }) => ({
   },
 }));
 
-const images = [
-  {
-    url: c1,
-    title: fashion,
-    width: '40%',
-  },
-  {
-    url: c2,
-    title: suit,
-    width: '20%',
-  },
-  {
-    url: c3,
-    title: shoes,
-    width: '40%',
-  },
-  {
-    url: c4,
-    title: accessories,
-    width: '38%',
-  },
-  {
-    url: c5,
-    title: pajamas,
-    width: '28%',
-  },
-  {
-    url: c6,
-    title: cosmetic,
-    width: '34%',
-  }
-];
+export default function ProductCategories(props) {
 
-export default function ProductCategories() {
+  const {
+    category,
+  } = props
+
   return (
     <Container component="section" sx={{ mt: 4, mb: 4 }}>
       <Typography variant="h4" marked="center" align="center" component="h2">
         Categoría
       </Typography>
       <Box sx={{ mt: 4, display: 'flex', flexWrap: 'wrap' }}>
-        {images.map((image) => (
+        {category.map((cat, index) => (
             <ImageIconButton
-              key={image.title}
+              key={cat.get('Cat')}
               style={{
-                width: image.width,
+                width: cat.get('Width'),
               }}
             >
               <Box
@@ -117,7 +82,7 @@ export default function ProductCategories() {
                   bottom: 0,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center 40%',
-                  backgroundImage: `url(${image.url})`,
+                  backgroundImage: `url(${cat.get('Pic')})`,
                 }}
               />
               <ImageBackdrop className="imageBackdrop" />
@@ -132,7 +97,7 @@ export default function ProductCategories() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: 'common.white',
+                    color: 'common.white'
                   }}
                 >
                   <Typography
@@ -141,7 +106,7 @@ export default function ProductCategories() {
                     color="inherit"
                     className="imageTitle"
                   >
-                    {image.title}
+                    {cat.get('Category')}
                     <div className="imageMarked" />
                   </Typography>
                 </Box>

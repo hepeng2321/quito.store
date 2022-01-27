@@ -1,10 +1,4 @@
 import * as React from 'react';
-import MenuList from '@mui/material/MenuList';
-
-import Paper from "@mui/material/Paper";
-import ClickAwayListener from "@mui/material/ClickAwayListener";
-
-import Popper from "@mui/material/Popper";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import {renderMenu} from "./menuUI";

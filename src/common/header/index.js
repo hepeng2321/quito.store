@@ -11,6 +11,7 @@ import {actionCreators as acShop} from "../../pages/shop/store";
 // import LoginDialog from "./login";
 import MenuMain from "../shopHeader/menuMain";
 import {Hidden} from "@mui/material";
+import ShopHeader from "../shopHeader";
 
 class Header extends PureComponent {
 
@@ -28,6 +29,7 @@ class Header extends PureComponent {
   render() {
     const {
       page,
+      catListed
       // me,
       // login,
       // loginUser,
@@ -67,6 +69,14 @@ class Header extends PureComponent {
               </Link>
             </Typography>
 
+            <Hidden mdDown>
+              <ShopHeader
+                cat={catListed}
+                page={page}
+                openPage={this.openPage}
+              />
+            </Hidden>
+
             {/*<Box sx={{ flexGrow: 0 }}>*/}
             {/*  <UserContentDiv>*/}
 
@@ -102,6 +112,7 @@ const mapStateToProps = (state) => {
     loginToken: state.getIn(['header', 'loginToken']),
     me: state.getIn(['header', 'me']),
     page: state.getIn(['shop', 'page']),
+    catListed: state.getIn(['shop', 'catListed']),
   }
 }
 

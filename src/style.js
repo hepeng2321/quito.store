@@ -77,7 +77,8 @@ export const GlobalStyle = createGlobalStyle`
 html {
   box-sizing: border-box;
   font-size: 100%;
-  font-family: 'HelveticaNeue', 'Helvetica', Arial, sans-serif;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  //font-family: 'HelveticaNeue', 'Helvetica', Arial, sans-serif;
   //font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   //font-family: 'HelveticaNeue', Helvetica, Arial, 'Lucida Grande', sans-serif;
   font-stretch: condensed;

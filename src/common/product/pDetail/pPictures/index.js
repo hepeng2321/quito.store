@@ -79,8 +79,10 @@ class ProductPictures extends PureComponent {
   }
 
   render() {
+
     const {
-      product,
+      disablePlay,
+      productPic,
     } = this.props
 
     const {
@@ -94,7 +96,7 @@ class ProductPictures extends PureComponent {
         <ProductDetailPictureWrapperDiv className={"ProductDetailPictureWrapperDiv"}>
           <ProductDetailPictureAreaListDiv ref={this.pRef} className={"ProductDetailPictureAreaListDiv"}>
             {
-              product.Pic.map((item, index) => (
+              productPic.map((item, index) => (
                 renderPic(index, picIndex, item, this.setPic)
               ))
             }
@@ -102,43 +104,51 @@ class ProductPictures extends PureComponent {
           <ProductDetailPictureAreaBigPictureDiv className={"ProductDetailPictureAreaBigPictureDiv"}>
             <ProductDetailPictureAreaBigPictureImg
               className={show ? 'show':'hide'}
-              src={product.Pic[picIndex]}
+              src={productPic[picIndex]}
               alt={"img"}
             />
           </ProductDetailPictureAreaBigPictureDiv>
         </ProductDetailPictureWrapperDiv>
 
-        <ProductDetailPictureAreaFunctionDiv className={"ProductDetailPictureAreaFunctionDiv"}>
-          { playing ?
-            <Button
-              variant="contained"
-              onClick={()=>this.startTimer()}
-              sx={{textTransform: 'none', height: "28px", width: "80px", borderRadius: 0}}
-            >
-              Pause
-            </Button> :
-            <Button
-              variant="outlined"
-              onClick={()=>this.startTimer()}
-              sx={{textTransform: 'none', height: "28px", width: "80px", borderRadius: 0}}
-            >
-              Playing
-            </Button>
-          }
-        </ProductDetailPictureAreaFunctionDiv>
+        {
+          !disablePlay ?
+            <ProductDetailPictureAreaFunctionDiv className={"ProductDetailPictureAreaFunctionDiv"}>
+              {
+                playing ?
+                  <Button
+                    variant="contained"
+                    onClick={()=>this.startTimer()}
+                    sx={{textTransform: 'none', height: "28px", width: "80px", borderRadius: 0}}
+                  >
+                    Pause
+                  </Button> :
+                  <Button
+                    variant="outlined"
+                    onClick={()=>this.startTimer()}
+                    sx={{textTransform: 'none', height: "28px", width: "80px", borderRadius: 0}}
+                  >
+                    Playing
+                  </Button>
+              }
+            </ProductDetailPictureAreaFunctionDiv> : undefined
+        }
+
       </React.Fragment>
     )
 
   }
 
   roll = () => {
+
     const {
-      product,
+      productPic,
     } = this.props
+
     const {
       picIndex
     } = this.state
-    let count = product.Pic.length
+
+    let count = productPic.length
     let index = 0
     timerShow = setTimeout(() => {
       if (picIndex < count - 1) {

@@ -17,7 +17,7 @@
       "https://cdn.discordapp.com/attachments/851633964807749642/933929404697022524/hmgoepprod.png"
     ],
     "Price": 299,
-    "POri": 550,
+    "PriceOri": 550,
     "Stock": [
       {"size": "S", "qty": 2},
       {"size": "M", "qty": 8},

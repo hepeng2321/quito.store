@@ -1,3 +1,4 @@
 export const PAGE = 'shop/Page'
-export const GET_ProdList = 'shop/GetProdList'
-export const GET_RecommendList = 'shop/GetRecommendList'
+export const GET_CatProduct = 'shop/GetCategoryProduct'
+export const GET_CatProdListed = 'shop/GetCategoryProductListed'
+

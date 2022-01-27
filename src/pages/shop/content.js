@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import {ProductListDiv, RecListDiv, RecTitleDiv} from "./style";
+import {NoGoodsDiv, ProductListDiv, RecListDiv, RecTitleDiv} from "./style";
 import Hidden from "@mui/material/Hidden";
 import PItem from "../../common/product/pItem";
 
@@ -10,12 +10,13 @@ export default function ShopContent(props) {
 
   const {
     itemWidth,
-    prodList,
+    prodListed,
     recommendList
   } = props
 
   let itemHeight = Math.ceil(itemWidth * 300 / 210)
 
+  console.log("prodListed", prodListed)
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Hidden mdUp>
@@ -23,17 +24,21 @@ export default function ShopContent(props) {
           <Grid item xs={12}>
             <ProductListDiv className={"ProductListDiv"}>
               <Grid container justifyContent="center" spacing={1}>
-                {prodList.product.map((item) => (
-                  <Grid key={"cat_"+item.Id} className={"cat_"+item.Id} item>
-                    <Paper elevation={0} sx={{ height: 'auto', width: itemWidth }}>
-                      <PItem
-                        product={item}
-                        itemWidth={itemWidth}
-                        itemHeight={itemHeight}
-                      />
-                    </Paper>
-                  </Grid>
-                ))}
+                {
+                  !prodListed ?
+                    <NoGoodsDiv>ningún producto disponible</NoGoodsDiv> :
+                    prodListed.map((item) => (
+                      <Grid key={"cat_"+item.Pid} className={"cat_"+item.Pid} item>
+                        <Paper elevation={0} sx={{ height: 'auto', width: itemWidth }}>
+                          <PItem
+                            product={item}
+                            itemWidth={itemWidth}
+                            itemHeight={itemHeight}
+                          />
+                        </Paper>
+                      </Grid>
+                    ))
+                }
               </Grid>
             </ProductListDiv>
           </Grid>
@@ -43,8 +48,8 @@ export default function ShopContent(props) {
                 <RecTitleDiv>Gran Venta</RecTitleDiv>
               </Grid>
               <Grid container justifyContent="center" spacing={1}>
-                {recommendList.product.map((item) => (
-                  <Grid key={"rec_"+item.Id} item>
+                {recommendList.map((item) => (
+                  <Grid key={"rec_"+item.Pid} item>
                     <Paper elevation={0} sx={{ height: 'auto', width: itemWidth }}>
                       <PItem
                         product={item}
@@ -64,17 +69,21 @@ export default function ShopContent(props) {
           <Grid item xs={9}>
             <ProductListDiv className={"ProductListDiv"}>
               <Grid container justifyContent="center" spacing={2}>
-                {prodList.product.map((item) => (
-                  <Grid key={"cat_"+item.Id} className={"cat_"+item.Id} item>
-                    <Paper elevation={0} sx={{ height: 'auto', width: itemWidth }}>
-                      <PItem
-                        product={item}
-                        itemWidth={itemWidth}
-                        itemHeight={itemHeight}
-                      />
-                    </Paper>
-                  </Grid>
-                ))}
+                {
+                  !prodListed ?
+                    <NoGoodsDiv>ningún producto disponible</NoGoodsDiv> :
+                    prodListed.map((item) => (
+                      <Grid key={"cat_"+item.Pid} className={"cat_"+item.Pid} item>
+                        <Paper elevation={0} sx={{ height: 'auto', width: itemWidth }}>
+                          <PItem
+                            product={item}
+                            itemWidth={itemWidth}
+                            itemHeight={itemHeight}
+                          />
+                        </Paper>
+                      </Grid>
+                    ))
+                }
               </Grid>
             </ProductListDiv>
           </Grid>
@@ -87,8 +96,8 @@ export default function ShopContent(props) {
                 <RecTitleDiv>Gran Venta</RecTitleDiv>
               </Grid>
               <Grid container justifyContent="center" rowSpacing={1} columnSpacing={0}>
-                {recommendList.product.map((item) => (
-                  <Grid key={"rec_"+item.Id} item>
+                {recommendList.map((item) => (
+                  <Grid key={"rec_"+item.Pid} item>
                     <Paper elevation={0} sx={{ height: 'auto', width: itemWidth }}>
                       <PItem
                         product={item}

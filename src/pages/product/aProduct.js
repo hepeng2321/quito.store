@@ -1,10 +1,8 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
 import {actionCreators} from "./store";
-import {actionCreators as acShop} from "../shop/store";
-import ShopHeader from "../../common/shopHeader";
 import ProductContent from "./content";
-import {Hidden} from "@mui/material";
+import {actionCreators as acHome} from "../home/store";
 
 function getWidth() {
   let width = Math.ceil(window.innerWidth - 40) / 2
@@ -39,40 +37,30 @@ class AProduct extends PureComponent {
     }
   }
 
-  openPage = (page) => {
-    this.props.setPage(page)  //设置激活页
-  }
-
   render() {
     const {
       id,
       pid,
       product,
       recommendList,
-      handleGetProduct,
-      handleGetRecommendList
+      handleGetProductAPI,
+      handleGetRecommendListAPI
     } = this.props
 
     if (!recommendList) {
-      handleGetRecommendList()
+      handleGetRecommendListAPI()
       if (id !== pid || !product) {
-        handleGetProduct(id)
+        handleGetProductAPI(id)
       }
       return null
     }
 
     if (id !== pid || !product) {
-      handleGetProduct(id)
+      handleGetProductAPI(id)
       return null
     } else {
       return (
         <React.Fragment>
-          <Hidden mdDown>
-            <ShopHeader
-              page={""}
-              openPage={this.openPage}
-            />
-          </Hidden>
           <ProductContent
             itemWidth={this.state.itemWidth}
             product={product.toJS()}
@@ -97,20 +85,17 @@ const mapStateToProps = (state) => {
   return {
     pid: state.getIn(['product', 'pid']),
     product: state.getIn(['product', 'product']),
-    recommendList: state.getIn(['shop', 'recommendList']),
+    recommendList: state.getIn(['home', 'recommendList']),
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleGetProduct(id) {
-      dispatch(actionCreators.getProductAPI(id))
+    handleGetProductAPI(pid) {
+      dispatch(actionCreators.getProductAPI(pid))
     },
-    setPage(page) {
-      dispatch(acShop.setPage(page))
-    },
-    handleGetRecommendList() {
-      dispatch(acShop.getRecommendAPI())
+    handleGetRecommendListAPI() {
+      dispatch(acHome.getRecommendAPI())
     }
   }
 }

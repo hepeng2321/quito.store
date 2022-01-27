@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
-import p_1 from "./p_1.json"
-import p_3 from "./p_3.json"
+import axios from "axios";
+import {Timeout} from "../../../common/util/url";
 
 const getProduct = (pid, product) => ({
   type: actionTypes.GET_Product,
@@ -8,14 +8,56 @@ const getProduct = (pid, product) => ({
   product: product
 })
 
-export const getProductAPI = (id) => {
+export const getProductAPI = (pid) => {
   return (dispatch) => {
-    if (id === "1") {
-      dispatch(getProduct(id, p_1.Body))
-    } else if (id === "3") {
-      dispatch(getProduct(id, p_3.Body))
-    } else {
-      dispatch(getProduct(id, p_1.Body))
-    }
+    const instance = axios.create({
+      baseURL: '/APIs/v1/product/' + pid,
+      timeout: Timeout,
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    return new Promise((resolve, reject) => {
+      instance.get('')
+        .then((res) => {
+          console.log("getProductAPI", res)
+          if (res.data.Code === 0) {
+            dispatch(getProduct(pid, res.data.Body.product))
+          }
+        })
+        .catch((e) => {
+          reject(e)
+        })
+    })
+  }
+};
+
+const getInbound = (pid, inbound) => ({
+  type: actionTypes.GET_Inbound,
+  inboundPid: pid,
+  inbound: inbound
+})
+
+export const getInboundAPI = (pid) => {
+  return (dispatch) => {
+    const instance = axios.create({
+      baseURL: '/APIs/v1/inbound/' + pid,
+      timeout: Timeout,
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    return new Promise((resolve, reject) => {
+      instance.get('')
+        .then((res) => {
+          console.log("getInboundAPI", res)
+          if (res.data.Code === 0) {
+            dispatch(getInbound(pid, res.data.Body.inbound))
+          }
+        })
+        .catch((e) => {
+          reject(e)
+        })
+    })
   }
 };

@@ -18,13 +18,14 @@ export default function ProductDetail(props) {
     product,
   } = props
 
+  console.log(9, product)
   return (
     <ProductDetailWrapperDiv className={"ProductDetailWrapperDiv"}>
       <Hidden mdDown>
         <ProductDetailTop1Div className={"ProductDetailTop1Div"}>
           <ProductDetailPictureAreaDiv className={"ProductDetailPictureAreaDiv"}>
             <ProductPictures
-              product={product}
+              productPic={product.Pic}
             />
           </ProductDetailPictureAreaDiv>
           <ProductDetailStockAreaDiv className={"ProductDetailStockAreaDiv"}>
@@ -37,7 +38,7 @@ export default function ProductDetail(props) {
       <Hidden mdUp>
         <ProductDetailPictureAreaDivMobile className={"ProductDetailPictureAreaDivMobile"}>
           <ProductPictures
-            product={product}
+            productPic={product.Pic}
           />
         </ProductDetailPictureAreaDivMobile>
         <ProductDetailStockAreaDivMobile className={"ProductDetailStockAreaDivMobile"}>

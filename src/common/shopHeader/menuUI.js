@@ -18,7 +18,7 @@ function activeMenu(page, openPage) {
   return (
     <Button onClick={() => openPage(page)}
             sx={{borderRadius: "0", fontWeight: "800",
-              color: '#0FA2E6', display: 'block',
+              color: '#fff', display: 'block',
               textTransform: 'none', marginLeft: '5px' }}>
       {page}
     </Button>
@@ -29,7 +29,7 @@ function inactiveMenu(page, openPage) {
   return (
     <Button onClick={() => openPage(page)}
             sx={{borderRadius: "0", fontWeight: "550",
-              color: '#666', display: 'block',
+              color: '#aaa', display: 'block',
               textTransform: 'none', marginLeft: '5px' }}>
       {page}
     </Button>
@@ -39,7 +39,7 @@ function inactiveMenu(page, openPage) {
 function activeMenuItem(page) {
   return (
     <React.Fragment>
-      <Typography variant="inherit" noWrap sx={{fontWeight: "600", color: "#0FA2E6"}}>
+      <Typography variant="inherit" noWrap sx={{fontWeight: "600", color: "#222"}}>
         {page}
       </Typography>
     </React.Fragment>
@@ -48,7 +48,7 @@ function activeMenuItem(page) {
 
 function inactiveMenuItem(page) {
   return (
-    <Typography variant="inherit" noWrap sx={{fontWeight: "550", color: "#666"}} >
+    <Typography variant="inherit" noWrap sx={{fontWeight: "550", color: "#888"}} >
       {page}
     </Typography>
   )

@@ -78,22 +78,22 @@ export default function PItem(props) {
 
   return (
     <ProductItemWrapperDiv>
-      <Link to={"/product/"+product.Id}>
+      <Link to={"/product/"+product.Pid}>
         <ProductItemPictureImg
-          src={hoverPic ? product.Pic[1]: product.Pic[0]}
+          src={hoverPic ? product.Pic2: product.Pic1}
           alt={"img"}
           style={{width: itemWidth, height: itemHeight}}
           onMouseEnter={handlePicToSecond}
           onMouseLeave={handlePicToFirst}
         />
       </Link>
-      <Link to={"/product/"+product.Id}>
+      <Link to={"/product/"+product.Pid}>
         <ProductItemTitleDiv>
           {product.Title}
         </ProductItemTitleDiv>
       </Link>
 
-      {renderPrice(product.Price, product.POri)}
+      {renderPrice(product.Price, product.PriceOri)}
 
     </ProductItemWrapperDiv>
   )

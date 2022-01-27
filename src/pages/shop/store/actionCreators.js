@@ -1,41 +1,68 @@
 import * as actionTypes from './actionTypes';
-import p1 from "./plFashion.json"
-import p3 from "./plShoes.json"
-import p5 from "./plCosmetic.json"
-import rec from "./plRecommend.json"
+import axios from "axios";
+import {Timeout} from "../../../common/util/url";
 
 export const setPage = (page) => ({
   type: actionTypes.PAGE,
   page: page,
 })
 
-const getProdList = (category, prodList) => ({
-  type: actionTypes.GET_ProdList,
-  category: category,
-  prodList: prodList
+const getCatProdListed = (cat, catProdListed) => ({
+  type: actionTypes.GET_CatProdListed,
+  catListed: cat,
+  catProdListed: catProdListed
 })
 
-export const getProdListAPI = (cat) => {
+export const getCatProdListedAPI = (cat) => {
   return (dispatch) => {
-    if (cat === "fashion") {
-      dispatch(getProdList(cat, p1.Body))
-    } else if (cat === "shoes") {
-      dispatch(getProdList(cat, p3.Body))
-    } else if (cat === "cosmetic") {
-      dispatch(getProdList(cat, p5.Body))
-    } else {
-      dispatch(getProdList(cat, p1.Body))
-    }
+    const instance = axios.create({
+      baseURL: '/APIs/v1/category_product_listed/' + cat,
+      timeout: Timeout,
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    return new Promise((resolve, reject) => {
+      instance.get('')
+        .then((res) => {
+          console.log("getCatProdListedAPI", res)
+          if (res.data.Code === 0) {
+            dispatch(getCatProdListed(cat, res.data.Body.catProducts))
+          }
+        })
+        .catch((e) => {
+          reject(e)
+        })
+    })
   }
 };
 
-const getRecommendList = (recommendList) => ({
-  type: actionTypes.GET_RecommendList,
-  recommendList: recommendList
+const getCatProduct = (cat, catProduct) => ({
+  type: actionTypes.GET_CatProduct,
+  cat: cat,
+  catProduct: catProduct
 })
 
-export const getRecommendAPI = () => {
+export const getCatProductAPI = (cat) => {
   return (dispatch) => {
-    dispatch(getRecommendList(rec.Body))
+    const instance = axios.create({
+      baseURL: '/APIs/v1/category_product/' + cat,
+      timeout: Timeout,
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    return new Promise((resolve, reject) => {
+      instance.get('')
+        .then((res) => {
+          console.log("getCatProductAPI", res)
+          if (res.data.Code === 0) {
+            dispatch(getCatProduct(cat, res.data.Body.catProducts))
+          }
+        })
+        .catch((e) => {
+          reject(e)
+        })
+    })
   }
 };

@@ -35,8 +35,8 @@ export default function ProductContent(props) {
                 <RecTitleDiv>Gran Venta</RecTitleDiv>
               </Grid>
               <Grid container justifyContent="center" spacing={2}>
-                {recommendList.product.map((item) => (
-                  <Grid key={"rec_"+item.Id} item>
+                {recommendList.map((item) => (
+                  <Grid key={"rec_"+item.Pid} item>
                     <Paper elevation={0} sx={{ height: 'auto', width: itemWidth }}>
                       <PItem
                         product={item}
@@ -66,8 +66,8 @@ export default function ProductContent(props) {
                 <RecTitleDiv>Gran Venta</RecTitleDiv>
               </Grid>
               <Grid container justifyContent="center" rowSpacing={1} columnSpacing={0}>
-                {recommendList.product.map((item) => (
-                  <Grid key={"rec_"+item.Id} item>
+                {recommendList.map((item) => (
+                  <Grid key={"rec_"+item.Pid} item>
                     <Paper elevation={0} sx={{ height: 'auto', width: itemWidth }}>
                       <PItem
                         product={item}

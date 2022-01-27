@@ -1,9 +1,8 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
 import {actionCreators} from "./store";
-import ShopHeader from "../../common/shopHeader";
+import {actionCreators as acHome} from "../home/store";
 import ShopContent from "./content";
-import {Hidden} from "@mui/material";
 
 function getWidth() {
   let width = Math.ceil(window.innerWidth - 30) / 2
@@ -38,52 +37,41 @@ class AShop extends PureComponent {
     }
   }
 
-  openPage = (page) => {
-    this.props.setPage(page)  //设置激活页
-  }
-
   render() {
     const {
       cat,
-      page,
-      category,
-      prodList,
+      catListed,
+      catProdListed,
       recommendList,
-      handleGetProdList,
-      handleGetRecommendList
+      handleGetCatProdListedAPI,
+      handleGetRecommendListAPI
     } = this.props
 
-    console.log(2, cat, page)
+    console.log(0, "|", catListed, "|", cat, "|", catProdListed)
     if (!recommendList) {
-      console.log(3, cat, page)
-      handleGetRecommendList()
-      if (category !== cat || !prodList) {
-        console.log(4, cat, page)
-        handleGetProdList(cat)
-      }
+      handleGetRecommendListAPI()
       return null
     }
 
-    console.log(5, cat, page)
+    console.log(2, "|", catListed, "|", cat, "|", catProdListed)
 
-    if (category !== cat || !prodList) {
-      console.log(6, cat, page)
-      handleGetProdList(cat)
+    if (catListed !== cat) {
+      console.log(3, "|", catListed, "|", cat, "|", catProdListed)
+      handleGetCatProdListedAPI(cat)
       return null
     } else {
-      console.log(7, cat, page)
+      console.log(5, "|", catListed, "|", cat, "|", catProdListed)
+      let prodListed
+      if (catProdListed) {
+        prodListed = catProdListed.toJS()
+      } else {
+        prodListed = null
+      }
       return (
         <React.Fragment>
-          <Hidden mdDown>
-            <ShopHeader
-              cat={cat}
-              page={page}
-              openPage={this.openPage}
-            />
-          </Hidden>
           <ShopContent
             itemWidth={this.state.itemWidth}
-            prodList={prodList.toJS()}
+            prodListed={prodListed}
             recommendList={recommendList.toJS()}
           />
         </React.Fragment>
@@ -103,23 +91,19 @@ class AShop extends PureComponent {
 
 const mapStateToProps = (state) => {
   return {
-    page: state.getIn(['shop', 'page']),
-    category: state.getIn(['shop', 'category']),
-    prodList: state.getIn(['shop', 'prodList']),
-    recommendList: state.getIn(['shop', 'recommendList']),
+    catListed: state.getIn(['shop', 'catListed']),
+    catProdListed: state.getIn(['shop', 'catProdListed']),
+    recommendList: state.getIn(['home', 'recommendList']),
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setPage(page) {
-      dispatch(actionCreators.setPage(page))
+    handleGetCatProdListedAPI(cat) {
+      dispatch(actionCreators.getCatProdListedAPI(cat))
     },
-    handleGetProdList(cat) {
-      dispatch(actionCreators.getProdListAPI(cat))
-    },
-    handleGetRecommendList() {
-      dispatch(actionCreators.getRecommendAPI())
+    handleGetRecommendListAPI() {
+      dispatch(acHome.getRecommendAPI())
     }
   }
 }

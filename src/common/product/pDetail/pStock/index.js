@@ -51,32 +51,37 @@ function renderPrice(price, priceOri) {
   }
 }
 
-function renderStock(item, index) {
+export function renderStock(item, index, dispalyStock) {
 
   const {
-    size,
-    qty
+    Size,
+    Qty
   } = item
 
   let disable
-  if (qty > 0) {
+  if (Qty > 0) {
     disable = false
   } else {
     disable = true
   }
 
   let stock
-  if ((qty <= 2) && (qty > 0)) {
-    stock = size + " (" + qty + ")"
+  if (!dispalyStock) {
+    if ((Qty <= 2) && (Qty > 0)) {
+      stock = Size + " (" + Qty + ")"
+    } else {
+      stock = Size
+    }
   } else {
-    stock = size
+    stock = Size + " (" + Qty + ")"
   }
 
   return (
     <Button
       variant="outlined"
-      key={index+size}
-      sx={{textTransform: 'none', margin: '5px 10px 7px 0', height: "28px", borderRadius: 0}}
+      size="small"
+      key={index+Size}
+      sx={{textTransform: 'none', margin: '2px 10px 7px 0', height: "25px", borderRadius: 0}}
       disabled={disable}
     >
       {stock}
@@ -95,21 +100,35 @@ export function RenderProductStock(props) {
         {product.Title}
       </ProductDetailTitleDiv>
 
-      {renderPrice(product.Price, product.POri)}
+      {renderPrice(product.Price, product.PriceOri)}
 
       <React.Fragment>
-        <ProductDetailItemDiv style={{padding: '8px 0 0 0'}}>
-          <ProductDetailItemTitleDiv>
-            Size & Stock:
-          </ProductDetailItemTitleDiv>
-        </ProductDetailItemDiv>
-        <ProductDetailItemStockDiv>
-          {
-            product.Stock.map((item, index) => (
-              renderStock(item, index)
-            ))
-          }
-        </ProductDetailItemStockDiv>
+        {
+          product.Stock ?
+            <React.Fragment>
+              <ProductDetailItemDiv style={{padding: '8px 0 0 0'}}>
+                <ProductDetailItemTitleDiv>
+                  Size & Stock:
+                </ProductDetailItemTitleDiv>
+              </ProductDetailItemDiv>
+              <ProductDetailItemStockDiv>
+                {
+                  product.Stock.map((item, index) => (
+                    renderStock(item, index)
+                  ))
+                }
+              </ProductDetailItemStockDiv>
+            </React.Fragment> :
+            <ProductDetailItemDiv style={{padding: '8px 0 0 0'}}>
+              <ProductDetailItemTitleDiv>
+                Size & Stock:
+              </ProductDetailItemTitleDiv>
+              <ProductDetailItemValueDiv style={{fontSize: '14px'}}>
+                Out of stock
+              </ProductDetailItemValueDiv>
+            </ProductDetailItemDiv>
+        }
+
       </React.Fragment>
 
       {

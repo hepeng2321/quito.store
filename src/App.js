@@ -5,6 +5,7 @@ import {MyBackground} from './style'
 import Header from "./common/header";
 import Shop from "./pages/shop"
 import Product from "./pages/product";
+import Admin from "./pages/admin";
 
 const AppRoute = (props) => {
   return useRoutes([
@@ -13,6 +14,7 @@ const AppRoute = (props) => {
     {path: "/shop", element: <Shop />, exact: true},
     {path: "/shop/:cat", element: <Shop />, exact: true},
     {path: "/product/:id", element: <Product />, exact: true},
+    {path: "/admin", element: <Admin />, exact: true},
   ]);
 };
 

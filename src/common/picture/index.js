@@ -53,7 +53,7 @@ export default function ShowPicture(props) {
       }
     }
 
-    // e.stopPropagation();
+    e.stopPropagation();
     // e.stopImmediatePropagation();
   };
 
