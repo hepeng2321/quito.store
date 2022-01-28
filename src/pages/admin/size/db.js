@@ -10,7 +10,7 @@ export function updateSizeAPI (sizeId, cat, size, handleGetSizeAPI) {
   }
   console.log(sizeId, cat, size, handleGetSizeAPI)
   const instance = axios.create({
-    baseURL: '/APIs/v1/update_size',
+    baseURL: '/v1/update_size',
     timeout: Timeout,
     headers: {
       'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ export function deleteSizeAPI (sizeId, handleGetSizeAPI) {
   }
 
   const instance = axios.create({
-    baseURL: '/APIs/v1/delete_size',
+    baseURL: '/v1/delete_size',
     timeout: Timeout,
     headers: {
       'Content-Type': 'application/json',

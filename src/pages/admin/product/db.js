@@ -24,7 +24,7 @@ export function updateProductAPI (pid, cat, title, fabric, description, pic1, pi
   }
 
   const instance = axios.create({
-    baseURL: '/APIs/v1/update_product',
+    baseURL: '/v1/update_product',
     timeout: Timeout,
     headers: {
       'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ export function deleteProductAPI (pid, cat, handleGetCatProductAPI) {
   }
 
   const instance = axios.create({
-    baseURL: '/APIs/v1/delete_product',
+    baseURL: '/v1/delete_product',
     timeout: Timeout,
     headers: {
       'Content-Type': 'application/json',

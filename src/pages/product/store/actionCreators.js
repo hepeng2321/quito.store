@@ -11,7 +11,7 @@ const getProduct = (pid, product) => ({
 export const getProductAPI = (pid) => {
   return (dispatch) => {
     const instance = axios.create({
-      baseURL: '/APIs/v1/product/' + pid,
+      baseURL: '/v1/product/' + pid,
       timeout: Timeout,
       headers: {
         'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ const getInbound = (pid, inbound) => ({
 export const getInboundAPI = (pid) => {
   return (dispatch) => {
     const instance = axios.create({
-      baseURL: '/APIs/v1/inbound/' + pid,
+      baseURL: '/v1/inbound/' + pid,
       timeout: Timeout,
       headers: {
         'Content-Type': 'application/json',

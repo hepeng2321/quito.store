@@ -25,7 +25,7 @@ export function inboundAPI (cat, pid, source, desc, catSizeList, handleGetCatPro
   }
 
   const instance = axios.create({
-    baseURL: '/APIs/v1/inbound',
+    baseURL: '/v1/inbound',
     timeout: Timeout,
     headers: {
       'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ export function reverseInboundAPI (cat, pid, id, handleGetCatProductAPI, handleG
   }
 
   const instance = axios.create({
-    baseURL: '/APIs/v1/reverse_inbound',
+    baseURL: '/v1/reverse_inbound',
     timeout: Timeout,
     headers: {
       'Content-Type': 'application/json',

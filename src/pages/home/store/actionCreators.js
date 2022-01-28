@@ -12,7 +12,7 @@ export const getCategoryAPI = () => {
   return (dispatch) => {
 
     const instance = axios.create({
-      baseURL: '/APIs/v1/category',
+      baseURL: '/v1/category',
       timeout: Timeout,
       headers: {
         'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ const getRecommendList = (recommendList) => ({
 export const getRecommendAPI = () => {
   return (dispatch) => {
     const instance = axios.create({
-      baseURL: '/APIs/v1/recommend',
+      baseURL: '/v1/recommend',
       timeout: Timeout,
       headers: {
         'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ export const getSizeAPI = () => {
   return (dispatch) => {
 
     const instance = axios.create({
-      baseURL: '/APIs/v1/size',
+      baseURL: '/v1/size',
       timeout: Timeout,
       headers: {
         'Content-Type': 'application/json',
@@ -107,7 +107,7 @@ export const getCatSizeAPI = (cat) => {
   return (dispatch) => {
 
     const instance = axios.create({
-      baseURL: '/APIs/v1/cat_size/' + cat,
+      baseURL: '/v1/cat_size/' + cat,
       timeout: Timeout,
       headers: {
         'Content-Type': 'application/json',

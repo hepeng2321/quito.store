@@ -14,7 +14,7 @@ export function updateCategoryAPI (id, cat, category, parent, brother, width, pi
   }
 
   const instance = axios.create({
-    baseURL: '/APIs/v1/update_category',
+    baseURL: '/v1/update_category',
     timeout: Timeout,
     headers: {
       'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ export function deleteCategoryAPI (id, handleGetCategoryAPI) {
   }
 
   const instance = axios.create({
-    baseURL: '/APIs/v1/delete_category',
+    baseURL: '/v1/delete_category',
     timeout: Timeout,
     headers: {
       'Content-Type': 'application/json',

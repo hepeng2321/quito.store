@@ -16,7 +16,7 @@ const getCatProdListed = (cat, catProdListed) => ({
 export const getCatProdListedAPI = (cat) => {
   return (dispatch) => {
     const instance = axios.create({
-      baseURL: '/APIs/v1/category_product_listed/' + cat,
+      baseURL: '/v1/category_product_listed/' + cat,
       timeout: Timeout,
       headers: {
         'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ const getCatProduct = (cat, catProduct) => ({
 export const getCatProductAPI = (cat) => {
   return (dispatch) => {
     const instance = axios.create({
-      baseURL: '/APIs/v1/category_product/' + cat,
+      baseURL: '/v1/category_product/' + cat,
       timeout: Timeout,
       headers: {
         'Content-Type': 'application/json',
